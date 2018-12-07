@@ -1,0 +1,11 @@
+print('Level 1')
+import requests
+from bs4 import BeautifulSoup
+url = input("Enter the url: ")
+the_word = 'electronics'
+r = requests.get(url, allow_redirects=False)
+soup = BeautifulSoup(r.content, 'html')
+words = soup.find(text=lambda text: text and the_word in text)
+print(words)
+count = len (words)
+print('\nUrl: {}\n the count of word is {}: {}'.format(url, count, the_word))
